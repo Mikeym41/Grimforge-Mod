@@ -28,7 +28,7 @@ public class Grimforge {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     // Placeholder item to prove the mod loads. Replaced by real runes in 0.5.
-    public static final DeferredItem<Item> TEST_RUNE = ITEMS.registerSimpleItem("test_rune", p -> p);
+    public static final DeferredItem<Item> TEST_RUNE = ITEMS.registerSimpleItem("test_rune", new Item.Properties());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GRIMFORGE_TAB =
             CREATIVE_MODE_TABS.register("grimforge", () -> CreativeModeTab.builder()

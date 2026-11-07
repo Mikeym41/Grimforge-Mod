@@ -27,6 +27,9 @@ Want to add a feature or fix a bug yourself? You can get the game running, with 
    * Windows - Command Prompt: `gradlew runClient`
    * Windows - PowerShell: `.\gradlew runClient`
 
+⚒️ That's it. ⚒️ The first run takes a while, because it downloads Minecraft and decompiles it so you can read its code. It needs about 4 GB of free memory, so close anything heavy first. If it works, **the game opens and you can make a world with Grimforge in it**.
+
+When you change the code, restart the game by running the command again. If your Java has an error in it, the command fails and tells you where.
 
 ### Using a Java IDE
 
