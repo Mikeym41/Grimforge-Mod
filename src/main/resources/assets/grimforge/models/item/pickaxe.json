@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "grimforge:item/tool/handle",
+    "layer1": "grimforge:item/tool/pickaxe/head",
+    "layer2": "grimforge:item/tool/binding"
+  }
+}

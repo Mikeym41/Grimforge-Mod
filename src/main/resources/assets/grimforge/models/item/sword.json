@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "grimforge:item/tool/sword/handle",
+    "layer1": "grimforge:item/tool/sword/blade",
+    "layer2": "grimforge:item/tool/sword/guard"
+  }
+}

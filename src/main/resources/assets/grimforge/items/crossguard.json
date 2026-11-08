@@ -1,0 +1,11 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "grimforge:item/crossguard",
+    "tints": [
+      {
+        "type": "grimforge:material"
+      }
+    ]
+  }
+}

@@ -24,10 +24,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 /**
- * Main class for Grimforge. NeoForge creates this when the mod loads.
+ * The main class for Grimforge.
  */
 @Mod(Grimforge.MODID)
 public class Grimforge {
+
     public static final String MODID = "grimforge";
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -35,8 +36,8 @@ public class Grimforge {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // Placeholder item to prove the mod loads. Replaced by real runes in 0.5.
-    public static final DeferredItem<Item> TEST_RUNE = ITEMS.registerSimpleItem("test_rune", p -> p);
+    // TODO: Replace with real runes in 0.5
+    public static final DeferredItem<Item> TEST_RUNE = ITEMS.registerSimpleItem("test_rune", properties -> properties);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GRIMFORGE_TAB =
             CREATIVE_MODE_TABS.register("grimforge", () -> CreativeModeTab.builder()
@@ -44,16 +45,14 @@ public class Grimforge {
                     .withTabsBefore(CreativeModeTabs.COMBAT)
                     .icon(() -> new ItemStack(GrimTools.get(ToolType.PICKAXE).get()))
                     .displayItems((parameters, output) -> {
-                        // A finished tool of every type in every material...
                         for (GrimMaterial material : GrimMaterials.all()) {
                             for (ToolType type : ToolType.values()) {
                                 output.accept(GrimTools.build(type, List.of(material, material, material)));
                             }
                         }
-                        // ...then every part in every material
                         for (var part : GrimParts.ALL) {
                             for (GrimMaterial material : GrimMaterials.all()) {
-                                output.accept(part.get().withMaterial(material));
+                                output.accept(part.get().create(material));
                             }
                         }
                         output.accept(TEST_RUNE.get());
@@ -61,10 +60,9 @@ public class Grimforge {
                     .build());
 
     public Grimforge(IEventBus modEventBus, ModContainer modContainer) {
-        GrimParts.init();
-        GrimTools.init();
-
         ITEMS.register(modEventBus);
+        GrimParts.ITEMS.register(modEventBus);
+        GrimTools.ITEMS.register(modEventBus);
         GrimComponents.COMPONENTS.register(modEventBus);
         GrimRecipes.SERIALIZERS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);

@@ -1,0 +1,11 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "grimforge:item/shovel_head",
+    "tints": [
+      {
+        "type": "grimforge:material"
+      }
+    ]
+  }
+}

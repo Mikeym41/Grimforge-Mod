@@ -10,20 +10,19 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
 /**
- * Client-only setup. This class never loads on a dedicated server,
- * so rendering and screen code goes here.
+ * Client-only setup. This class never loads on a dedicated server.
  */
 @Mod(value = Grimforge.MODID, dist = Dist.CLIENT)
 @EventBusSubscriber(modid = Grimforge.MODID, value = Dist.CLIENT)
 public class GrimforgeClient {
+
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
         Grimforge.LOGGER.info("Grimforge client ready");
     }
 
-    // Lets item model files use "grimforge:material" to color parts
     @SubscribeEvent
-    static void registerTints(RegisterColorHandlersEvent.ItemTintSources event) {
+    static void onRegisterItemTintSources(RegisterColorHandlersEvent.ItemTintSources event) {
         event.register(Identifier.fromNamespaceAndPath(Grimforge.MODID, "material"), MaterialTint.MAP_CODEC);
     }
 }
