@@ -1,11 +1,19 @@
 package dev.grimforge;
 
 import com.mojang.logging.LogUtils;
+import dev.grimforge.material.GrimMaterial;
+import dev.grimforge.material.GrimMaterials;
+import dev.grimforge.part.GrimParts;
+import dev.grimforge.recipe.GrimRecipes;
+import dev.grimforge.tool.GrimTools;
+import dev.grimforge.tool.ToolType;
+import java.util.List;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -34,12 +42,31 @@ public class Grimforge {
             CREATIVE_MODE_TABS.register("grimforge", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.grimforge"))
                     .withTabsBefore(CreativeModeTabs.COMBAT)
-                    .icon(() -> TEST_RUNE.get().getDefaultInstance())
-                    .displayItems((parameters, output) -> output.accept(TEST_RUNE.get()))
+                    .icon(() -> new ItemStack(GrimTools.get(ToolType.PICKAXE).get()))
+                    .displayItems((parameters, output) -> {
+                        // A finished tool of every type in every material...
+                        for (GrimMaterial material : GrimMaterials.all()) {
+                            for (ToolType type : ToolType.values()) {
+                                output.accept(GrimTools.build(type, List.of(material, material, material)));
+                            }
+                        }
+                        // ...then every part in every material
+                        for (var part : GrimParts.ALL) {
+                            for (GrimMaterial material : GrimMaterials.all()) {
+                                output.accept(part.get().withMaterial(material));
+                            }
+                        }
+                        output.accept(TEST_RUNE.get());
+                    })
                     .build());
 
     public Grimforge(IEventBus modEventBus, ModContainer modContainer) {
+        GrimParts.init();
+        GrimTools.init();
+
         ITEMS.register(modEventBus);
+        GrimComponents.COMPONENTS.register(modEventBus);
+        GrimRecipes.SERIALIZERS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
     }
