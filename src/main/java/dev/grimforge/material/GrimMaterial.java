@@ -4,6 +4,7 @@ import dev.grimforge.Grimforge;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 /**
@@ -18,6 +19,7 @@ import net.minecraft.world.level.block.Block;
  * @param handleSpeed the mining speed multiplier of a handle
  * @param enchantability the enchantability
  * @param incorrectForDrops the blocks a head can't harvest
+ * @param toolMaterials items parts are crafted from
  */
 public record GrimMaterial(
         String name,
@@ -28,7 +30,8 @@ public record GrimMaterial(
         float attackDamage,
         float handleSpeed,
         int enchantability,
-        TagKey<Block> incorrectForDrops) {
+        TagKey<Block> incorrectForDrops,
+        TagKey<Item> toolMaterials) {
 
     /**
      * Gets the ID of this material.

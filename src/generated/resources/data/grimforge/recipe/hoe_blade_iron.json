@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "#minecraft:iron_tool_materials",
+    "C": "minecraft:clay_ball"
+  },
+  "pattern": [
+    "##",
+    " C"
+  ],
+  "result": {
+    "components": {
+      "grimforge:material": "grimforge:iron"
+    },
+    "id": "grimforge:hoe_blade"
+  }
+}

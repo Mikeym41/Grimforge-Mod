@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "#minecraft:gold_tool_materials",
+    "C": "minecraft:clay_ball"
+  },
+  "pattern": [
+    "###",
+    " C "
+  ],
+  "result": {
+    "components": {
+      "grimforge:material": "grimforge:gold"
+    },
+    "id": "grimforge:pickaxe_head"
+  }
+}

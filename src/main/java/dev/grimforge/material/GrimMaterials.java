@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -18,15 +19,20 @@ public final class GrimMaterials {
     private static final Map<Identifier, GrimMaterial> BY_ID = new HashMap<>();
 
     public static final GrimMaterial WOOD = register(new GrimMaterial(
-            "wood", 0x9C7448, 1, 59, 2.0F, 0.0F, 1.0F, 15, BlockTags.INCORRECT_FOR_WOODEN_TOOL));
+            "wood", 0x9C7448, 1, 59, 2.0F, 0.0F, 1.0F, 15, BlockTags.INCORRECT_FOR_WOODEN_TOOL,
+                  ItemTags.WOODEN_TOOL_MATERIALS));
     public static final GrimMaterial STONE = register(new GrimMaterial(
-            "stone", 0x9A9A9A, 2, 131, 4.0F, 1.0F, 0.95F, 5, BlockTags.INCORRECT_FOR_STONE_TOOL));
+            "stone", 0x9A9A9A, 2, 131, 4.0F, 1.0F, 0.95F, 5, BlockTags.INCORRECT_FOR_STONE_TOOL,
+                  ItemTags.STONE_TOOL_MATERIALS));
     public static final GrimMaterial IRON = register(new GrimMaterial(
-            "iron", 0xE0E0E0, 3, 250, 6.0F, 2.0F, 1.0F, 14, BlockTags.INCORRECT_FOR_IRON_TOOL));
+            "iron", 0xE0E0E0, 3, 250, 6.0F, 2.0F, 1.0F, 14, BlockTags.INCORRECT_FOR_IRON_TOOL,
+                  ItemTags.IRON_TOOL_MATERIALS));
     public static final GrimMaterial GOLD = register(new GrimMaterial(
-            "gold", 0xF5D43A, 1, 32, 12.0F, 0.0F, 1.1F, 22, BlockTags.INCORRECT_FOR_GOLD_TOOL));
+            "gold", 0xF5D43A, 1, 32, 12.0F, 0.0F, 1.1F, 22, BlockTags.INCORRECT_FOR_GOLD_TOOL,
+                  ItemTags.GOLD_TOOL_MATERIALS));
     public static final GrimMaterial DIAMOND = register(new GrimMaterial(
-            "diamond", 0x4AEDD9, 4, 1561, 8.0F, 3.0F, 1.0F, 10, BlockTags.INCORRECT_FOR_DIAMOND_TOOL));
+            "diamond", 0x4AEDD9, 4, 1561, 8.0F, 3.0F, 1.0F, 10, BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
+                  ItemTags.DIAMOND_TOOL_MATERIALS));
 
     private GrimMaterials() {
     }

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "#minecraft:diamond_tool_materials",
+    "C": "minecraft:clay_ball"
+  },
+  "pattern": [
+    "#",
+    "C"
+  ],
+  "result": {
+    "components": {
+      "grimforge:material": "grimforge:diamond"
+    },
+    "id": "grimforge:shovel_head"
+  }
+}
